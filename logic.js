@@ -236,14 +236,14 @@ function showButtons(style) {
   copy_info.style.display = 'none';
   email_info.style.display = 'none';
 }
- 
+
 
 
 
 
 
  $(".text_process_button").click(function(){
-		var textString = $("#searchInput").val().trim();
+		var textString = $("#final_span").val().trim();
 		console.log(textString);
 
         $.ajax({
@@ -253,7 +253,7 @@ function showButtons(style) {
             data: {text: textString},
             datatype: 'json',
             success: function (result) {
-            	
+
 				console.log(result);
 				console.log(result.type);
 				console.log(result.score);
@@ -265,8 +265,8 @@ function showButtons(style) {
 				console.log((Math.abs(result.score*100)));
 				if(result.type==="negative"){
 					$('#bar').addClass("progress-bar-danger");
-				}	
-				
+				}
+
 					else if(result.type==="positive"){
 						$('#bar').addClass("progress-bar-success");
 					}
@@ -284,9 +284,9 @@ function showButtons(style) {
 
 				$("#word1").html(result.keywords["0"].word+"= "+result.keywords["0"].score);
 				$("#word2").html(result.keywords["1"].word+"= "+result.keywords["1"].score);
-				$("#word3").html(result.keywords["2"].word+"= "+result.keywords["2"].score);	
+				$("#word3").html(result.keywords["2"].word+"= "+result.keywords["2"].score);
 				$("#word4").html(result.keywords["3"].word+"= "+result.keywords["3"].score);
-				$("#word5").html(result.keywords["4"].word+"= "+result.keywords["4"].score);	
+				$("#word5").html(result.keywords["4"].word+"= "+result.keywords["4"].score);
             },
             error: function (err) {
                 alert(err);
@@ -297,5 +297,3 @@ function showButtons(style) {
         });
 
     });
-
-
